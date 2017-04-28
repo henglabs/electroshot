@@ -9,10 +9,14 @@ function waitFor(num, onDone) {
 
   // requestAnimationFrame's callback happens right before a paint. So, it takes two calls
   // before we can be confident that one paint has happened.
-  requestAnimationFrame(function() {
-    requestAnimationFrame(function() {
-      onDone();
-    });
+  // requestAnimationFrame(function() {
+  //   requestAnimationFrame(function() {
+  //     onDone();
+  //   });
+  // });
+  document.body.addEventListener('allChartRendered', function() {
+    console.log('RECEIVE', 'allChartRendered');
+    onDone();
   });
 }
 ipc.on('waitfor', function ensureRendered(event, delay, eventName) {
