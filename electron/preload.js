@@ -14,10 +14,13 @@ function waitFor(num, onDone) {
   //     onDone();
   //   });
   // });
+  var CustomizeTimer_BackUp_For_AllChartRendered_Event;
   document.body.addEventListener('allChartRendered', function() {
     console.log('RECEIVE', 'allChartRendered');
+    clearTimeout(CustomizeTimer_BackUp_For_AllChartRendered_Event);
     onDone();
   });
+  CustomizeTimer_BackUp_For_AllChartRendered_Event = setTimeout(onDone, 30);
 }
 ipc.on('waitfor', function ensureRendered(event, delay, eventName) {
   console.log('RECEIVE', 'waitfor', delay, eventName);
