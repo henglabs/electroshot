@@ -20,7 +20,7 @@ function waitFor(num, onDone) {
     clearTimeout(CustomizeTimer_BackUp_For_AllChartRendered_Event);
     onDone();
   });
-  CustomizeTimer_BackUp_For_AllChartRendered_Event = setTimeout(onDone, 30);
+  CustomizeTimer_BackUp_For_AllChartRendered_Event = setTimeout(onDone, 60000);
 }
 ipc.on('waitfor', function ensureRendered(event, delay, eventName) {
   console.log('RECEIVE', 'waitfor', delay, eventName);
