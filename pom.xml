@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.hengshi.sense</groupId>
+  <artifactId>electoshot</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  <build>
+    <resources>
+      <resource>
+          <directory>/usr/bin/</directory>
+          <includes>
+            <include>node</include>
+          </includes>
+          <targetPath>../electoshot/bin/</targetPath>
+      </resource> 
+      <resource>
+          <directory>bin</directory>
+          <targetPath>../electoshot/bin</targetPath>
+      </resource> 
+      <resource>
+          <directory>lib</directory>
+          <targetPath>../electoshot/lib</targetPath>
+      </resource> 
+      <resource>
+          <directory>electon</directory>
+          <targetPath>../electoshot/electon</targetPath>
+      </resource> 
+      <resource>
+          <directory>node_modules</directory>
+          <targetPath>../electoshot/node_modules</targetPath>
+      </resource> 
+    </resources>
+    <plugins>
+      <plugin>
+        <artifactId>exec-maven-plugin</artifactId>
+        <groupId>org.codehaus.mojo</groupId>
+        <version>1.6.0</version>
+        <executions>
+          <execution>
+            <id>produce frontend code</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>yarn</executable>
+              <arguments>install</arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>chmod +x node</id>
+            <phase>process-test-classes</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>chmod</executable>
+              <arguments>
+                <argument>+x</argument>
+                <argument>target/electoshot/bin/node</argument>
+              </arguments>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>      
+    </plugins>
+  </build>
+  <distributionManagement>
+     <repository>
+        <id>nexus-releases</id>
+        <url>http://nexus.hengshi.org/content/repositories/releases</url>
+     </repository>
+     <snapshotRepository>
+        <id>nexus-snapshots</id>
+        <url>http://nexus.hengshi.org/content/repositories/snapshots</url>
+     </snapshotRepository>
+  </distributionManagement>  
+</project>
+
