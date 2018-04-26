@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.hengshi.sense</groupId>
-  <artifactId>electoshot</artifactId>
+  <artifactId>electroshot</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
   <build>
