@@ -14,23 +14,23 @@
           <includes>
             <include>node</include>
           </includes>
-          <targetPath>electoshot/bin/</targetPath>
+          <targetPath>electroshot/bin/</targetPath>
       </resource> 
       <resource>
           <directory>bin</directory>
-          <targetPath>electoshot/bin</targetPath>
+          <targetPath>electroshot/bin</targetPath>
       </resource> 
       <resource>
           <directory>lib</directory>
-          <targetPath>electoshot/lib</targetPath>
+          <targetPath>electroshot/lib</targetPath>
       </resource> 
       <resource>
-          <directory>electon</directory>
-          <targetPath>electoshot/electon</targetPath>
+          <directory>electron</directory>
+          <targetPath>electroshot/electron</targetPath>
       </resource> 
       <resource>
           <directory>node_modules</directory>
-          <targetPath>electoshot/node_modules</targetPath>
+          <targetPath>electroshot/node_modules</targetPath>
       </resource> 
     </resources>
     <plugins>
@@ -60,7 +60,7 @@
               <executable>chmod</executable>
               <arguments>
                 <argument>+x</argument>
-                <argument>target/classes/electoshot/bin/node</argument>
+                <argument>target/classes/electroshot/bin/node</argument>
               </arguments>
             </configuration>
           </execution>
