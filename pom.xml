@@ -32,6 +32,10 @@
           <directory>node_modules</directory>
           <targetPath>electroshot/node_modules</targetPath>
       </resource> 
+      <resource>
+          <directory>pdfjam</directory>
+          <targetPath>electroshot/pdfjam</targetPath>
+      </resource> 
     </resources>
     <plugins>
       <plugin>
@@ -61,6 +65,7 @@
               <arguments>
                 <argument>+x</argument>
                 <argument>target/classes/electroshot/bin/node</argument>
+                <argument>target/classes/electroshot/pdfjam/bin/*</argument>
               </arguments>
             </configuration>
           </execution>
