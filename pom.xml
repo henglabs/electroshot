@@ -54,23 +54,25 @@
               <arguments>install</arguments>
             </configuration>
           </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
           <execution>
-            <id>chmod +x node</id>
-            <phase>process-test-classes</phase>
-            <goals>
-              <goal>exec</goal>
-            </goals>
+            <phase>package</phase>
             <configuration>
-              <executable>chmod</executable>
-              <arguments>
-                <argument>+x</argument>
-                <argument>target/classes/electroshot/bin/node</argument>
-                <argument>target/classes/electroshot/pdfjam/bin/*</argument>
-              </arguments>
+              <tasks>
+                <chmod dir="target/classes/electroshot/pdfjam/bin/" perm="755" includes="**" />
+                <chmod file="target/classes/electroshot/bin/node" perm="755" />
+              </tasks>
             </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
           </execution>
         </executions>
-      </plugin>      
+      </plugin>
     </plugins>
   </build>
   <distributionManagement>
