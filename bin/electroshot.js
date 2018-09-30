@@ -82,7 +82,7 @@ if (pairs.length > 0) {
 
 // run electron and pipe the tasks into it
 function runElectron() {
-  var configFile = os.tmpdir() + '/electroshot-config.json';
+  var configFile = os.tmpdir() + '/electroshot-config-' + process.pid + '.json';
 
   var electronArgs = [
     path.join(__dirname, '..', 'electron', 'index.js')
@@ -111,6 +111,11 @@ function runElectron() {
       process.exit(code);
     } else {
       console.log(logSymbols.success, 'Generated ' + tasks.length + ' screenshot' + (tasks.length > 1 ? 's' : '') + '.');
+    }
+    try {
+      fs.unlinkSync(configFile);
+    } catch (err) {
+      console.log('successfully deleted config: ' + configFile);
     }
   });
 }
