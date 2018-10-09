@@ -5,7 +5,7 @@
 
   <groupId>com.hengshi.sense</groupId>
   <artifactId>electroshot</artifactId>
-  <version>0.0.3</version>
+  <version>0.0.4</version>
   <packaging>jar</packaging>
   <build>
     <resources>
@@ -60,7 +60,7 @@
         <artifactId>maven-antrun-plugin</artifactId>
         <executions>
           <execution>
-            <phase>package</phase>
+            <phase>prepare-package</phase>
             <configuration>
               <tasks>
                 <chmod dir="target/classes/electroshot/pdfjam/bin/" perm="755" includes="**" />
