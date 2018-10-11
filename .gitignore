@@ -2,3 +2,6 @@ node_modules/
 *.png
 .DS_Store
 target
+*.iml
+.idea
+yarn.lock
