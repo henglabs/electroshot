@@ -78,11 +78,11 @@
   <distributionManagement>
      <repository>
         <id>nexus-releases</id>
-        <url>http://nexus.hengshi.org/content/repositories/releases</url>
+        <url>https://nexus.hengshi.org/content/repositories/releases</url>
      </repository>
      <snapshotRepository>
         <id>nexus-snapshots</id>
-        <url>http://nexus.hengshi.org/content/repositories/snapshots</url>
+        <url>https://nexus.hengshi.org/content/repositories/snapshots</url>
      </snapshotRepository>
   </distributionManagement>  
 </project>
