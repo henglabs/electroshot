@@ -137,7 +137,7 @@ TargetWindow.prototype.setUpPreloadedListener = function(task, onDone) {
           ipc.once('css-loaded', function() {
             onTaskDone();
           });
-          self.window.webContents.send('waitfor', 0, 'css-loaded');
+          self.window.webContents.send('waitfor', 0, 0, 'css-loaded');
         } : false,
         task.size.height == 0 ? function(onTaskDone) {
           // ensure window is sized to full content ...
@@ -149,7 +149,7 @@ TargetWindow.prototype.setUpPreloadedListener = function(task, onDone) {
               ipc.once('content-dimensions-loaded', function() {
                 onTaskDone();
               });
-              self.window.webContents.send('waitfor', 0, 'content-dimensions-loaded');
+              self.window.webContents.send('waitfor', 0, 0, 'content-dimensions-loaded');
               return;
             }
             onTaskDone();
@@ -174,7 +174,7 @@ TargetWindow.prototype.setUpPreloadedListener = function(task, onDone) {
           ipc.once('js-done', function() {
             onTaskDone();
           });
-          self.window.webContents.send('waitfor', 0, 'js-done');
+          self.window.webContents.send('waitfor', 0, 0, 'js-done');
         });
       }
       console.log(tasks);
@@ -189,10 +189,10 @@ TargetWindow.prototype.setUpPreloadedListener = function(task, onDone) {
       log.debug('SEND', 'set-zoom-factor', task['zoom-factor']);
       self.window.webContents.send('set-zoom-factor', task['zoom-factor']);
       ipc.once('return-zoom-factor', function() {
-        self.window.webContents.send('ensure-rendered', task.delay, 'loaded');
+        self.window.webContents.send('ensure-rendered', task.delay, task.timeout, 'loaded');
       });
     } else {
-      self.window.webContents.send('ensure-rendered', task.delay, 'loaded');
+      self.window.webContents.send('ensure-rendered', task.delay, task.timeout, 'loaded');
     }
   });
 };

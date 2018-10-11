@@ -1,7 +1,7 @@
 var ipc = require('electron').ipcRenderer;
 var webFrame = require('electron').webFrame;
 
-function waitFor(num, onDone) {
+function waitFor(num, timeout, onDone) {
   if (num) {
     setTimeout(onDone, num);
     return;
@@ -20,18 +20,18 @@ function waitFor(num, onDone) {
     clearTimeout(CustomizeTimer_BackUp_For_AllChartRendered_Event);
     onDone();
   });
-  CustomizeTimer_BackUp_For_AllChartRendered_Event = setTimeout(onDone, 60000);
+  CustomizeTimer_BackUp_For_AllChartRendered_Event = setTimeout(onDone, timeout || 60000);
 }
-ipc.on('waitfor', function ensureRendered(event, delay, eventName) {
+ipc.on('waitfor', function ensureRendered(event, delay, timeout, eventName) {
   console.log('RECEIVE', 'waitfor', delay, eventName);
-  waitFor(delay, function() {
+  waitFor(delay, timeout, function() {
     console.log('SEND', eventName);
     ipc.send(eventName);
   });
 });
 
 
-ipc.on('ensure-rendered', function ensureRendered(event, delay, eventName) {
+ipc.on('ensure-rendered', function ensureRendered(event, delay, timeout, eventName) {
   console.log('RECEIVE', 'ensure-rendered', delay, eventName);
   try {
     var style = document.createElement('style');
@@ -41,7 +41,7 @@ ipc.on('ensure-rendered', function ensureRendered(event, delay, eventName) {
     style.sheet.insertRule('::-webkit-scrollbar { display: none; }', 0);
   } catch (e) {}
 
-  waitFor(delay, function() {
+  waitFor(delay, timeout, function() {
     console.log('SEND', eventName);
     ipc.send(eventName);
   });
