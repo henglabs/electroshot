@@ -106,7 +106,7 @@ OPTIONS - MISC
 
     --help, -h         Show this help.
 
-    --debug            Verbose debugging mode.
+    --debug            Verbose debugging mode. export ELECTRON_ENABLE_LOGGING=1 to log debug info
 
     --version, -v      Version info.
 

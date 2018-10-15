@@ -222,7 +222,7 @@ You can inject CSS and JS into the page using the following options:
 ## Misc
 
 - `--help, -h`: Shows the builtin help.
-- `--debug`: Enables debugging mode, which shows additional logging information and renders the screenshots in a visible window.
+- `--debug`: Enables debugging mode, which shows additional logging information and renders the screenshots in a visible window. export ELECTRON_ENABLE_LOGGING=1 to log debug info
 - `--version`: Shows version info for `electroshot` as well as the Chrome and Electron version used.
 
 ### Passing thru Chrome flags

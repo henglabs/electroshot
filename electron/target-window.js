@@ -8,6 +8,7 @@ var ipc = require('electron').ipcMain,
     parallel = require('miniq');
 
 var log = require('minilog')('electron');
+const {session} = require('electron');
 
 var dres;
 
@@ -115,6 +116,13 @@ TargetWindow.prototype.completeInit = function(task, onDone) {
     // to work around https://github.com/atom/electron/issues/1580
     this.window.webContents.executeJavaScript(fs.readFileSync(path.resolve(__dirname + '/preload.js'), 'utf8'), false);
   }
+  session.defaultSession.webRequest.onBeforeRequest((details,callback)=>{
+    console.log("onBeforeRequest "+new Date +" id:"+details.id+" url:"+details.url+" method:"+details.method+" time:"+details.timestamp);
+    callback(details);
+    });
+  session.defaultSession.webRequest.onCompleted(details=>{
+    console.log("onCompleted "+new Date +" id:"+details.id+" url:"+details.url+" method:"+details.method+" time:"+details.timestamp);
+    });
 };
 
 TargetWindow.prototype.setUpPreloadedListener = function(task, onDone) {
