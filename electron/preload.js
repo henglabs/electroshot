@@ -14,13 +14,13 @@ function waitFor(num, timeout, onDone) {
   //     onDone();
   //   });
   // });
-  //var CustomizeTimer_BackUp_For_AllChartRendered_Event;
+  var CustomizeTimer_BackUp_For_AllChartRendered_Event;
   document.body.addEventListener('allChartRendered', function() {
     console.log('RECEIVE', 'allChartRendered');
-    //clearTimeout(CustomizeTimer_BackUp_For_AllChartRendered_Event);
+    clearTimeout(CustomizeTimer_BackUp_For_AllChartRendered_Event);
     onDone();
   });
-  //CustomizeTimer_BackUp_For_AllChartRendered_Event = setTimeout(onDone, timeout || 60000);
+  CustomizeTimer_BackUp_For_AllChartRendered_Event = setTimeout(onDone, timeout || 60000);
 }
 ipc.on('waitfor', function ensureRendered(event, delay, timeout, eventName) {
   console.log('RECEIVE', 'waitfor', delay, eventName);
