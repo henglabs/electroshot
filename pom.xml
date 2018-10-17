@@ -5,7 +5,7 @@
 
   <groupId>com.hengshi.sense</groupId>
   <artifactId>electroshot</artifactId>
-  <version>0.0.6</version>
+  <version>0.0.7</version>
   <packaging>jar</packaging>
   <build>
     <resources>
